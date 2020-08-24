@@ -17,7 +17,7 @@ df = subset(df, select=-c(X))
 factors <- df[['region']]
 indianCanto$structures <- data.frame(region = as.factor(factors))
 
-indianCanto$amova <- amova(indianCanto$samples, indianCanto$distances, indianCanto$structures)
+indianCanto$amova <- amova(indianCanto$samples, quasieuclid(indianCanto$distances), indianCanto$structures)
 
 
 globalCanto <- list("samples", "distances", "structures")
