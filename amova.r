@@ -2,6 +2,8 @@ library('textshape')
 library('ade4')
 setwd('~/Documents/Work/sfc-journal-2020/')
 
+# all 200 samples 
+
 indianCanto <- list("samples", "distances", "structures")
 df <- read.csv('./data/samples.csv')
 indianCanto$samples = subset(df, select = -c(X))
@@ -18,6 +20,25 @@ factors <- df[['region']]
 indianCanto$structures <- data.frame(region = as.factor(factors))
 
 indianCanto$amova <- amova(indianCanto$samples, quasieuclid(indianCanto$distances), indianCanto$structures)
+
+# Subset of samples
+
+indianCantoSubset <- list("samples", "distances", "structures")
+df <- read.csv('./data/samples_subset.csv')
+indianCantoSubset$samples = subset(df, select = -c(X))
+indianCantoSubset$samples <- column_to_rownames(indianCantoSubset$samples, "canto_coding_id")
+
+df <- read.csv('./data/indian_no_singles_subset.csv')
+df <- subset(df, select = -c(X, Number.of.Samples, region, division, subregion, area_kingdom, culture, lat, lng))
+df <- column_to_rownames(df, "canto_coding_id")
+indianCantoSubset$distances <- dist(df, method="euclidean")
+
+df <- read.csv('./data/structure_subset.csv')
+df = subset(df, select=-c(X))
+factors <- df[['region']]
+indianCantoSubset$structures <- data.frame(region = as.factor(factors))
+
+indianCantoSubset$amova <- amova(indianCantoSubset$samples, quasieuclid(indianCantoSubset$distances), indianCantoSubset$structures)
 
 
 globalCanto <- list("samples", "distances", "structures")
