@@ -1,0 +1,26 @@
+Line Number,Variable,Type,Category
+4,MUSICAL ORGANIZATION OF THE VOCAL PART,Categorical,Musical Organization
+7,MUSICAL ORGANIZATION OF THE ORCHESTRA,Categorical,Musical Organization
+10,REPETITION OF TEXT,Ordinal,Social Organization
+11,OVERALL RHYTHM: VOCAL,Categorical,Metrical Pattern
+15,MELODIC SHAPE,Categorical,Melodic Form
+16,MELODIC FORM,Categorical,Melodic Form
+17,PHRASE LENGTH,Ordinal,Metrical Pattern
+18,NUMBER OF PHRASES,Ordinal,Melodic Form
+19,POSITION OF FINAL TONE,Ordinal,Articulation
+20,MELODIC RANGE,Ordinal,Musical Characterstics
+21,INTERVAL SIZE,Ordinal,Articulation
+23,EMBELLISHMENT,Ordinal,Ornament
+24,TEMPO,Ordinal,Dynamics
+25,VOLUME,Ordinal,Dynamics
+26,RUBATO: VOCAL,Ordinal,Metrical Pattern
+28,GLISSANDO,Ordinal,Ornament
+29,MELISMA,Ordinal,Ornament
+30,TREMOLO,Ordinal,Ornament
+31,GLOTTAL,Ordinal,Ornament
+32,VOCAL PITCH (REGISTER),Ordinal,Dynamics
+33,VOCAL WIDTH,Ordinal,Vocal Noise
+34,NASALITY,Ordinal,Vocal Noise
+35,RASP,Ordinal,Vocal Noise
+36,ACCENT,Ordinal,Dynamics
+37,ENUNCIATION,Ordinal,Articulation
