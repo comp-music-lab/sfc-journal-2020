@@ -2,7 +2,7 @@ library('textshape')
 library('ade4')
 setwd('~/Documents/Work/sfc-journal-2020/')
 
-# all 200 samples 
+# subset samples 
 
 indianCanto <- list("samples", "distances", "structures")
 df <- read.csv('./data/samples.csv')
@@ -21,25 +21,28 @@ indianCanto$structures <- data.frame(region = as.factor(factors))
 
 indianCanto$amova <- amova(indianCanto$samples, quasieuclid(indianCanto$distances), indianCanto$structures)
 
-# Subset of samples
 
-indianCantoSubset <- list("samples", "distances", "structures")
-df <- read.csv('./data/samples_subset.csv')
-indianCantoSubset$samples = subset(df, select = -c(X))
-indianCantoSubset$samples <- column_to_rownames(indianCantoSubset$samples, "canto_coding_id")
+# full samples
+indianCanto <- list("samples", "distances", "structures")
+df <- read.csv('./data/samples_full.csv')
+indianCanto$samples = subset(df, select = -c(X))
+indianCanto$samples <- column_to_rownames(indianCanto$samples, "canto_coding_id")
 
-df <- read.csv('./data/indian_no_singles_subset.csv')
-df <- subset(df, select = -c(X, Number.of.Samples, region, division, subregion, area_kingdom, culture, lat, lng))
+df <- read.csv('./data/no_singles_full.csv')
+df <- subset(df, select = -c(language, people, song, region, division, subregion, area_kingdom, culture, lat, lng))
 df <- column_to_rownames(df, "canto_coding_id")
-indianCantoSubset$distances <- dist(df, method="euclidean")
+indianCanto$distances <- dist(df, method="euclidean")
 
-df <- read.csv('./data/structure_subset.csv')
+df <- read.csv('./data/structure_full.csv')
 df = subset(df, select=-c(X))
-factors <- df[['region']]
-indianCantoSubset$structures <- data.frame(region = as.factor(factors))
+factors <- df[['language']]
+indianCanto$structures <- data.frame(region = as.factor(factors))
 
-indianCantoSubset$amova <- amova(indianCantoSubset$samples, quasieuclid(indianCantoSubset$distances), indianCantoSubset$structures)
+indianCanto$amova <- amova(indianCanto$samples, indianCanto$distances, indianCanto$structures)
 
+
+
+# Global Canto
 
 globalCanto <- list("samples", "distances", "structures")
 df <- read.csv('./data/global_samples.csv')
