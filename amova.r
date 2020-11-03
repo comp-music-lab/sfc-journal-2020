@@ -10,7 +10,7 @@ indianCanto$samples = subset(df, select = -c(X))
 indianCanto$samples <- column_to_rownames(indianCanto$samples, "canto_coding_id")
 
 df <- read.csv('./data/filtered.csv')
-df <- subset(df, select = -c(X, Number.of.Samples, region, division, subregion, area_kingdom, culture, lat, lng))
+df <- subset(df, select = -c(X, Number.of.Samples, language, people, song, region, division, subregion, area_kingdom, culture, lat, lng))
 df <- column_to_rownames(df, "canto_coding_id")
 indianCanto$distances <- dist(df, method="euclidean")
 
@@ -19,8 +19,29 @@ df = subset(df, select=-c(X))
 factors <- df[['language']]
 indianCanto$structures <- data.frame(region = as.factor(factors))
 
-indianCanto$amova <- amova(indianCanto$samples, quasieuclid(indianCanto$distances), indianCanto$structures)
+indianCanto$amova <- amova(indianCanto$samples, indianCanto$distances, indianCanto$structures)
 
+
+# subset samples and features
+
+indianCanto <- list("samples", "distances", "structures")
+df <- read.csv('./data/samples.csv')
+indianCanto$samples = subset(df, select = -c(X))
+indianCanto$samples <- column_to_rownames(indianCanto$samples, "canto_coding_id")
+
+df <- read.csv('./data/filtered.csv')
+df <- subset(df, select = -c(X, Number.of.Samples, language, people, song, region, division, subregion,
+                             area_kingdom, culture, lat, lng, cv_1,cv_5,cv_6,cv_12,
+                             cv_22,cv_2,cv_3,cv_8,cv_9,cv_13,cv_14,cv_27))
+df <- column_to_rownames(df, "canto_coding_id")
+indianCanto$distances <- dist(df, method="euclidean")
+
+df <- read.csv('./data/structure.csv')
+df = subset(df, select=-c(X))
+factors <- df[['language']]
+indianCanto$structures <- data.frame(region = as.factor(factors))
+
+indianCanto$amova <- amova(indianCanto$samples, indianCanto$distances, indianCanto$structures)
 
 # full samples
 indianCanto <- list("samples", "distances", "structures")
