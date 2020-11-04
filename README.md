@@ -35,12 +35,23 @@ I haven't commited this file but it basically has the word document for the pape
 ## R scripts
 
 `amova.r` has the scripts necessary to do amova analsis. You need `ade4` and `textshape` packages to run it.
-`mds.r` runs MDS analysis but we didn't include it in the paper
 
 
 ## Python notebooks
-Data Prep formats the latest data from the Cantometrics codings. 
 
-The codings are on a protected google sheet. 
-In order to get the latest data you need access credentials. Submit a pull request to access the data, and I will give you access.
-Once that is done, I will guide you on how to store your credentials effectively.
+Running code in a cell is as easy as clicking on the cell and pressing Shift+Enter
+
+### Data Prep 
+
+This formats the latest data from the Cantometrics codings. 
+
+**NOTE**
+The codings are on a protected google sheet. In order to get the latest data you need access credentials. 
+Submit a pull request to access the google sheet.
+
+### Map Plots
+This is how we plot the map figures.
+
+### PCA
+This is how we plot PCA, produce loadings and make scree plots.
+
