@@ -1,3 +1,6 @@
 .DS_Store
 paper/*
 .idea
+.Rhistory
+.ipynb_checkpoints
+token.pickle
