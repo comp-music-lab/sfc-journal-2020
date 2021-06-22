@@ -3,4 +3,4 @@ paper/*
 .idea
 .Rhistory
 .ipynb_checkpoints
-token.pickle
+token.picklecredentials.json
